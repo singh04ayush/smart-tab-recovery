@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+    }
+    .setting {
+      margin-bottom: 10px;
+    }
+    button {
+      padding: 5px 10px;
+      margin-top: 10px;
+    }
+  </style>
+</head>
+<body>
+  <h3>Settings</h3>
+  
+  <div class="setting">
+    <label for="duration">Tab Retention Duration: </label>
+    <select id="duration">
+      <option value="30">30 mins</option>
+      <option value="60">1 hour</option>
+      <option value="1440">1 day</option>
+      <option value="10080">1 week</option>
+    </select>
+  </div>
+  
+  <button id="saveSettings">Save Settings</button>
+  
+  <script>
+    document.getElementById("saveSettings").addEventListener("click", () => {
+      const duration = document.getElementById("duration").value;
+      chrome.storage.local.set({ retentionDuration: duration });
+      alert("Settings saved!");
+    });
+  </script>
+</body>
+</html>
